@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stop Log</title>
+<meta name="apple-mobile-web-app-title" content="Stop Log">
+<meta name="theme-color" content="#2C6A4C">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-512.png">
+<script>
+  // Where the app lives. Change this one line if the app ever moves (e.g. to its own GitHub version).
+  var APP_URL = "https://claude.ai/artifact/3XJkMPU3XwDgYmH5ZZfyi1";
+  // After setup, every launch goes straight to the app.
+  try { if (localStorage.getItem("stoplog-setup") === "done" && location.hash !== "#setup") location.replace(APP_URL); } catch (e) {}
+</script>
+<style>
+  :root { color-scheme: light dark; --bg:#F2F4F1; --ink:#18201B; --muted:#5B665F; --accent:#2C6A4C; --line:#D8DED7; --card:#fff; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111613; --ink:#E6EBE7; --muted:#9AA69F; --accent:#6EBE92; --line:#29322C; --card:#19201C; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.45 -apple-system, system-ui, "Segoe UI", sans-serif;
+    padding: max(24px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); }
+  main { max-width: 440px; margin: 0 auto; display:flex; flex-direction:column; gap:18px; }
+  img { width:96px; height:96px; border-radius:22px; }
+  h1 { margin:0; font-size:1.6rem; }
+  p { margin:0; color:var(--muted); }
+  ol { margin:0; padding:16px 16px 16px 36px; background:var(--card); border:1px solid var(--line); border-radius:14px; display:flex; flex-direction:column; gap:10px; }
+  button, a.btn { display:block; width:100%; text-align:center; text-decoration:none; border:0; border-radius:12px; padding:14px; font:inherit; font-weight:600; cursor:pointer; }
+  .primary { background:var(--accent); color:#fff; }
+  .secondary { background:transparent; color:var(--accent); border:1.5px solid var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <img src="apple-touch-icon.png" alt="Stop Log icon">
+  <h1>Add Stop Log to your home screen</h1>
+  <p>One-time setup. After this, the icon opens your app directly.</p>
+  <ol>
+    <li>Tap the <b>Share</b> button at the bottom of Safari.</li>
+    <li>Scroll down and tap <b>Add to Home Screen</b>, then <b>Add</b>.</li>
+    <li>Come back here and tap <b>I've added it</b>.</li>
+  </ol>
+  <button class="primary" id="done">I've added it</button>
+  <a class="btn secondary" id="open" href="https://claude.ai/artifact/3XJkMPU3XwDgYmH5ZZfyi1">Just open the app</a>
+</main>
+<script>
+  document.getElementById("open").href = APP_URL;
+  document.getElementById("done").addEventListener("click", function () {
+    try { localStorage.setItem("stoplog-setup", "done"); } catch (e) {}
+    location.replace(APP_URL);
+  });
+</script>
+</body>
+</html>
